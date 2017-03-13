@@ -1,0 +1,72 @@
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+
+$navbar-inverse-link-color:                 $menu-text-color;
+$navbar-default-link-hover-color:           $menu-text-hover;
+$navbar-default-link-active-color:          $menu-text-hover;
+$navbar-inverse-link-hover-color:           $menu-text-hover;
+$navbar-inverse-link-active-color:          $menu-text-hover;
+$navbar-inverse-toggle-hover-bg:            $menu-text-hover;
+$navbar-inverse-toggle-icon-bar-bg:         $menu-text-color;
+$navbar-inverse-toggle-border-color:        $menu-text-color;
+$navbar-inverse-brand-hover-color:          $menu-text-hover;
+$navbar-default-color:                      rgba(255, 255, 255, 0) !default;
+$navbar-default-bg:                         rgba(255, 255, 255, 0) !default;
+$navbar-inverse-bg:                         rgba(255, 255, 255, 0) !default;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.ng-hide {
+  /* this is just another form of hiding an element */
+  display: none!important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  -ms-transform: scale(0); /* IE 9 */
+  -webkit-transform: scale(0); /* Safari */
+  transform: scale(0);
+}
+
+
+.navbar-toggle{
+  float: left;
+  margin-left: 15px; 
+}
+
+
+/******* SetUp *******/
+
+
+br, .clearfix{
+	clear: both;
+}

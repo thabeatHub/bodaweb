@@ -1,0 +1,196 @@
+@import "include-media", "fonts";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+html{
+	height: 100%;
+	margin: 0;
+}
+head{
+	height: 0;
+}
+body{
+	height: 100%;
+	color: black;
+	font-size: 25px;
+}
+
+#parallax{
+	position: absolute;
+		top: 0;
+	margin: 0;
+	min-height: 100%;
+	width: 100%;
+	background-image: url("../assets/img/down-left-phone.png"), url("../assets/img/up-right-phone.png");
+	background-repeat: no-repeat, no-repeat;
+	background-position: bottom left, top right;
+	
+	@include media(">phone") {
+
+		background-image: url("../assets/img/down-left.png"), url("../assets/img/up-right.png");
+
+	}
+}
+
+.main{
+	padding-bottom: 130px;
+	p.text{
+		text-indent: 1em;
+		text-align: justify;
+
+		a{
+			color: $link-color;
+		}
+		a:hover{
+			color: $link-hover;
+			text-decoration: none;
+			font-size: 0.99em;
+		}
+
+	}
+	>div>div{
+		margin: 0 10%;
+	}
+	font-family: 'Reem Kufi', sans-serif;
+	margin: 15% auto 0 auto;
+	
+	@include media(">phone") {
+		font-size:1.6em;
+		margin: 10% 10% 0 10%;
+		padding-bottom: 200px;
+		>div>div{
+			margin: 0;
+		}	
+	}
+}
+.titol, .title{
+	font-size: 3em;
+	text-indent: 0;
+	font-family: meadowbrook;
+	//font-weight: bold;
+}
+
+#map{
+	div.map.medium{
+		display: none;
+	}
+	div.map.small{
+		display: block;
+		max-width: 100%;
+		text-align: center;
+		margin-bottom: 50px;
+		iframe{
+			display: inline-block;
+			max-width: 100%;
+			margin: 0 auto;
+			border: solid 5px $border;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+		}
+	}
+
+	ul.instructions{
+		list-style-type: none;
+		margin-top: 30px;
+		margin-bottom: 50px;
+
+		li{
+			line-height: 160%;
+		}
+	}
+	
+	@include media(">phone") {
+		div.map.medium{
+			display: block;
+			max-width: 100%;
+			text-align: center;
+			margin-bottom: 50px;
+			margin-top: 25px;
+			iframe{
+				display: inline-block;
+				max-width: 100%;
+				margin: 0 auto;
+				border: solid 8px $border;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+			}
+		}
+		div.map.small{
+			display: none;		
+		}
+	}
+
+}
+
+#main{
+
+	margin: 0;
+	
+	text-align: center;
+	.centering{
+		display: inline-block;
+		text-align: left;
+		min-width: 219px;
+	}
+
+	h1{
+		font-weight: bold;
+		font-size: 1.8em;
+
+	}
+	.maintitle{
+		font-size: 7em;
+		font-weight: normal;
+		font-family: meadowbrook;
+		p{
+			line-height: .4em;
+		}
+	}
+
+	h2{
+		font-size: 1.2em;
+		font-weight: 550;
+		line-height: .2em;
+	}
+	h3{
+		font-size: .9em;
+		line-height: .2em;
+	}
+	@include media(">phone"){
+		h1{
+			font-weight: bold;
+			font-size: 2.5em;
+
+		}
+		.maintitle{
+			font-size: 10em;
+			font-weight: normal;
+			font-family: meadowbrook;
+			p{
+				line-height: .4em;
+			}
+		}
+
+		h2{
+			font-size: 2em;
+			font-weight: 550;
+			line-height: .6em;
+		}
+		h3{
+			font-size: 1em;
+			line-height: .6em;
+		}
+	}
+}

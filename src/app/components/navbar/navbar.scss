@@ -1,0 +1,13 @@
+.acme-navbar-text{
+  color: black;
+}
+
+.navbar .container-fluid{
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	background-color: none;
+}
+
+li a:focus{
+	text-shadow: 1px 1px 0 $menu-text-color;
+}
