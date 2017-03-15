@@ -1,12 +1,58 @@
 (function(){
 	// body...
+    
+    Dropzone.autoDiscover = false; 
+
 	angular
 		.module('bodasergi')
-		.controller('UploadController', UploadController);
+		.controller('UploadController', UploadController)
+        .directive('dropDirective', function(){
+            // Runs during compile
+            return {
+                // name: '',
+                // priority: 1,
+                // terminal: true,
+                // scope: {}, // {} = isolate, true = child, false/undefined = no change
+                // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+                // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+                template: '<ng-dropzone action="/target" class="dropzone" options="$ctrl.dzOptions" callbacks="$ctrl.dzCallbacks" methods="$ctrl.dzMethods"></ng-dropzone>',
+                controller : function(){
+                    var vm = this;
 
-		UploadController.$inject = ['$scope', '$http', '$routeParams','loginService', 'customAWSService'];
+                    // children yet not link
+                    vm.$onInit = function(){
+                        vm.dzOptions = {
+                            url : '/upload',
+                            acceptedFiles : 'image/jpeg, images/jpg, image/png',
+                            addRemoveLinks : true,
+                            dictDefaultMessage : 'Click to add or drop photos (10 max)',
+                            dictRemoveFile : 'Remove photo',
+                            dictResponseError : 'Could not upload this photo',
+                            paramName : 'photo',
+                            maxFilesize : '10',
+                            maxFiles : '10'
+                        };
 
-		function UploadController($scope, $http, $routeParams, loginService, customAWSService){
+                        vm.dzCallbacks = {};
+                        vm.dzMethods = {};
+                    };
+
+                    // children are linked
+                    vm.$postLink = function(){
+                        var dz = vm.dzMethods.getDropzone();
+                        console.log(dz);
+                    }
+                }
+                // templateUrl: '',
+                // replace: true,
+                // transclude: true,
+                // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            };
+        });
+
+		/** @ngInject */
+
+		function UploadController($scope, $http, $log, $routeParams, loginService, customAWSService){
 
 			var vm = this;
 
@@ -17,6 +63,34 @@
             vm.file;
             vm.obj = {};
 
+            vm.dropzone = document.getElementById('dropzone');
+
+            vm.dropzone.ondrop = function(e){
+                e.preventDefault();
+                this.className = 'dropzone';
+
+                
+                if(e.dataTransfer.files.length==1){
+                    console.log("Ok!");
+                    console.log(e.dataTransfer.files[0]);
+                    vm.newItem.FileName = e.dataTransfer.files[0].name;
+                    console.log("FileName: " + vm.newItem.FileName);
+                    vm.newItem.FileDate = e.dataTransfer.files[0].lastModifiedDate.toISOString().slice(0,10);
+                    console.log("FileDate: " + vm.newItem.FileDate);
+                    vm.$digest();
+                    return e.dataTransfer.files[0];
+                }
+                else console.log("There was some sort of error: Should be exclusively one item!");
+            }
+            vm.dropzone.ondragover = function(e){
+                this.className = 'dropzone over';
+                return false;
+            }
+            vm.dropzone.ondragleave = function(e){
+                this.className = 'dropzone';
+                return false;
+            }
+            
             button.addEventListener('click', function() {
               
               vm.file = fileChooser.files[0];
@@ -74,6 +148,31 @@
                 }
                 console.log(JSON.stringify(vm.obj,null,"    "));
             };
+
+            //Set options for dropzone
+            //Visit http://www.dropzonejs.com/#configuration-options for more options
+                vm.$onInit = function(){
+                    vm.dzOptions = {
+                        url : '/upload',
+                        acceptedFiles : 'image/jpeg, images/jpg, image/png',
+                        addRemoveLinks : true,
+                        dictDefaultMessage : 'Click to add or drop photos (10 max)',
+                        dictRemoveFile : 'Remove photo',
+                        dictResponseError : 'Could not upload this photo',
+                        paramName : 'photo',
+                        maxFilesize : '10',
+                        maxFiles : '10'
+                    };
+
+                    vm.dzCallbacks = {};
+                    vm.dzMethods = {};
+                };
+
+                // children are linked
+                vm.$postLink = function(){
+                    var dz = vm.dzMethods.getDropzone();
+                    console.log(dz);
+                }
 
 		}
 })();

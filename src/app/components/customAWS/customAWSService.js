@@ -5,7 +5,7 @@
 		.module('bodasergi')
 		.service('customAWSService', customAWSService);
 
-		customAWSService.$inject = ['$q'];
+		/** @ngInject */
 
 		function customAWSService($q){
 
@@ -22,7 +22,7 @@
 			vm.roleArnFB = 'arn:aws:iam::419400150602:role/myAppFBRole';
 			vm.roleArnAmazon = 'arn:aws:iam::419400150602:role/myAppAmazonRole';
 			
-			vm.bucketName = 'thabeat--archiving-tool';
+			vm.bucketName = 'casorifestival.com';
 
 
 			vm.bucket = new vm.AWS.S3({

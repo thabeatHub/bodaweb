@@ -194,3 +194,139 @@ body{
 		}
 	}
 }
+
+/*******Upload PAGE *******/
+	#uplaodForm{
+		display: block;
+		outline: solid 1px tomato;
+		text-align: left;
+	}
+
+	#uploadForm div.formPart > input, #uploadForm div.formPart > label{
+		display: block;
+		width: 80%;
+		clear: both;
+	}
+
+	#uploadForm ul.radio{
+		list-style: none;
+		display: block;
+		clear: both;
+	}
+	#uploadForm ul.radio li{
+		width: 100%;
+	}
+
+	/*****DynamoDB******/
+  #dynamodb .container{
+    margin-bottom: 20px;
+  }
+
+  #dropzone{
+    margin: 15px;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    line-height: 150px;
+    
+    &.dropzone{
+      outline: dashed 3px #bbb;
+      color: #bbb;
+    }
+    &.dropzone.over{
+      margin: 15px; 
+      outline: dashed 5px #222;
+      color: #222;  
+    }
+  }
+
+  div.formPart{
+    display: inline-block;
+    width: 46.5%;
+    margin-right: 3%;
+    vertical-align: top;
+    min-width: 180px;
+  }
+
+  .queryResults{
+    min-height: 100px;
+    font-size: 1rem;
+  }
+
+  /******LOGIN FB ********/
+
+  #LogoutAmazon, #LogoutFB{
+  		display: none;
+  		text-decoration: none;
+  		max-width: 10em;
+  		margin: 1em 0;
+  		-webkit-box-shadow: 2px 2px 0 3px $shadows;
+  		box-shadow: 2px 2px 0 3px $shadows;
+  	}
+
+  	#LoginWithAmazon, #LoginWithFB{
+  		display: block;
+  		max-width: 10em;
+  		margin: 1em 0;
+  		-webkit-box-shadow: 2px 2px 0 3px $shadows;
+  		box-shadow: 2px 2px 0 3px $shadows;
+
+  	}
+
+  	#searchArea{
+  		margin-bottom: 20px;
+  	}
+
+  	#navigationmenu{
+  		display: block;
+  		}
+
+  		#navigationmenu ul{
+  			list-style: none;
+  		}
+
+  		#navigationmenu ul li{
+  			display: inline-block;
+  		}
+
+  		#navigationmenu ul li a{
+  			margin-right: 8px;
+  			text-decoration: none;
+  	}
+
+  	#logmessage,
+  		#logmessage.ko{
+  			display: block;
+  			color: white;
+  			background-color: red;
+  			margin-top: 10px;
+  			padding: 5px;
+  			-webkit-border-radius: 6px;
+  			border-radius: 6px;
+
+  		}
+
+  		#logmessage.ok{
+  			color: white;
+  			background-color: green;
+  			font-weight: bold;
+  			padding: 5px;
+  		    animation-name: fadeOut;
+  		    animation-duration: 5s;
+  		    animation-fill-mode: forwards;
+  		}
+
+  		@-webkit-keyframes fadeOut{
+
+  			/* Chrome, Safari, Opera */ 
+
+  		    from {opacity: 1; display: block;}
+  		    to {opacity: 0; display: none;}
+  		} 
+  		@keyframes fadeOut{
+
+  			/* Standard syntax */ 
+
+  		    from {opacity: 1; display: block;}
+  		    to {opacity: 0; display: none;}
+  	}
