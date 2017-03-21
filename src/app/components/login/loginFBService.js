@@ -34,7 +34,7 @@
 			})(document);
 			
 			//Facebook app Id
-			var appId = '524137347748230';
+			var appId = '930647563739051';
 
 			var loginWithFB = document.getElementById('LoginWithFB');
 			loginWithFB.style.display = 'block';

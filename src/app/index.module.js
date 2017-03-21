@@ -1,11 +1,10 @@
 (function() {
   'use strict';
-  Dropzone.autoDiscover = false;
 
   angular
     .module('bodasergi', 
     	['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
-    	'ngMessages', 'ngAria', 'ngRoute', 'toastr', 'thatisuday.dropzone',
+    	'ngMessages', 'ngAria', 'ngRoute', 'toastr', 'flow',
     	'ui.bootstrap']);
 
 })();
