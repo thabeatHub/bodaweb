@@ -4,7 +4,8 @@
   angular
     .module('bodasergi', 
     	['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
-    	'ngMessages', 'ngAria', 'ngRoute', 'toastr', 'flow',
+    	'ngMessages', 'ngAria', 'ngRoute', 'toastr', 'flow', 'flow.provider', 'flow.init', 'flow.events', 'flow.btn',
+  'flow.drop', 'flow.transfers', 'flow.img', 'flow.dragEvents',
     	'ui.bootstrap']);
 
 })();
