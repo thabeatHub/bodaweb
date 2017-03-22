@@ -18,7 +18,7 @@
                 $log.log(vm.obj);
             }
 
-            vm.dropzone = document.getElementById('flowjs');
+            vm.dropzone = document.getElementById('dropzonebox');
 
             vm.dropzone.ondrop = function(e){
                 e.preventDefault();

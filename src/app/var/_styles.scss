@@ -334,7 +334,6 @@ body{
   	/************* Upload Dropzone ********/
 
   	#flowjs{
-  		 outline: solid 1px blue;
   		 margin: 15px;
   		 //height: 150px;
   		//width: 150px;
@@ -342,17 +341,17 @@ body{
   		 line-height: 150px;
   		 
   		 .drop{
-  		   outline: dashed 3px #bbb;
-  		   color: #bbb;
+  		 	margin: 0px 0px 10px 0px; 
+  		 	outline: dashed 3px #bbb;
+  		 	color: #bbb;
   		 }
   		 .drop.over{
-  		   margin: 15px; 
+  		   margin: 10px 10px 10px 10px; 
   		   outline: dashed 5px #222;
   		   color: #222;  
   		 }
 
   		 .gallery-box{
-  		 	outline: solid 1px tomato;
   		 	width: 23%;
   		 	padding: 1%;
   		 	line-height: 1ex;
