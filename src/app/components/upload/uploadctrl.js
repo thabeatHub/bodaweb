@@ -20,6 +20,14 @@
 
             vm.dropzone = document.getElementById('dropzonebox');
 
+            // vm.galleryContainer = document.getElementById('gallery-container');
+
+            // vm.galleryContainer.ondrop = function(e){
+            //     e.preventDefault();
+            // }
+
+
+
             vm.dropzone.ondrop = function(e){
                 e.preventDefault();
                 this.className = 'drop';

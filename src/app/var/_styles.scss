@@ -351,23 +351,42 @@ body{
   		   color: #222;  
   		 }
 
+  		 .gallery-container{
+  		 	width: 100%;
+  		 	text-align: left;
+  		 }
+
   		 .gallery-box{
   		 	width: 23%;
-  		 	padding: 1%;
+  		 	margin: 0 1%;
+  		 	padding: 0;
   		 	line-height: 1ex;
   		 	display: inline-block;
+  		 	text-align: center;
   		 	.filename{
+  		 		display: inline-block;
+  		 		max-width: 100%;
   		 		line-height: 3ex;
+  		 		font-size: 1.5rem;
+  		 		text-overflow: ellipsis;
+  		 		text-align: center;
+  		 		 /* Required for text-overflow to do anything */
+  		 		 white-space: nowrap;
+  		 		 overflow: hidden;
   		 	}
   		 	.thumbnail {
-  		 		display: block;
-  		 		max-width: 200px; 
-  		 		max-height: 150px; 
-  		 		//line-height: 150px; 
-  		 		margin-bottom: 5px;
+  		 		//padding: 4px;
+  		 		width: 100%; 
+  		 		height: 150px; 
+  		 		line-height: 140px;  
+  		 		text-align: center;
+  		 		vertical-align: middle;
+		 		    
   		 		img{
+  		 			display: inline-block;
   		 			max-width: 100%;
-  		 			max-height: 100%;
+  		 			max-height: 140px;
+  		 			vertical-align: middle;
   		 		}
   		 	}
 
