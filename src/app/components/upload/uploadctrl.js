@@ -16,6 +16,7 @@
 
             vm.showObject = function(){
                 $log.log(vm.obj);
+                $log.log(vm.obj.files);                
             }
 
             vm.dropzone = document.getElementById('dropzonebox');
@@ -25,6 +26,12 @@
             // vm.galleryContainer.ondrop = function(e){
             //     e.preventDefault();
             // }
+            // 
+            
+            vm.methodUplaod = function(flowFile, flowChunks){
+                $log.log(flowFile);
+                $log.log(flowChunks);
+            }
 
 
 

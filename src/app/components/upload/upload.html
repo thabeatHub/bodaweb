@@ -1,21 +1,32 @@
-<div id="upload">
+<div id="upload" class="container">
 	
-	<div class="container">
+	<div>
 
 		<p>Puja per aquí les teves fotos:</p>
 
-		<div id="flowjs" flow-init
-		     flow-files-submitted="$flow.upload()"
-		     flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+		
+		<button class="btn btn-default" ng-click="upload.showObject(); upload.obj.upload();">Puja-ho tot</button>
+		<div id="flowjs" 
+			flow-init="{
+				uploadMethod: upload.methodUplaod
+			}" 
+			flow-name="upload.obj"
+		    flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 		  <div id="dropzonebox" class="drop" flow-drop ng-class="dropClass">
-		    <span class="btn btn-default" flow-btn>Puja Imatge</span>
-		    <span class="btn btn-default" flow-btn flow-directory ng-show="$flow.supportDirectory">Puja un directori d'Imatges</span>
-		    o també pots <b>arrossegar les imatges aquí</b>
+			<div class="wrapperflex">
+				<div class="wrapper">
+				    <span class="btn btn-default" flow-btn>Selecciona Imatge</span>
+				    <span class="btn btn-default" flow-btn flow-directory ng-show="$flow.supportDirectory">Selecciona un directori d'Imatges</span>
+				    o també pots <b>arrossegar les imatges aquí   </b>
+				    
+				 </div>
+			</div>
+
 		    <div id="gallery-container" class="gallery-container">
 
-		      <div ng-repeat="file in $flow.files" class="gallery-box">
+		      <div ng-repeat="file in upload.obj.files" class="gallery-box">
 		        <span class="filename">{{file.name}}</span>
-		        <div class="thumbnail" ng-show="$flow.files.length">
+		        <div class="thumbnail" ng-show="upload.obj.files.length">
 			          	<img flow-img="file" />
 		        </div>
 		        <div class="clear"></div>

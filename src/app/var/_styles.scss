@@ -333,12 +333,36 @@ body{
 
   	/************* Upload Dropzone ********/
 
+  	#upload{
+  		width: 100%;
+  	}
+
   	#flowjs{
-  		 margin: 15px;
+  		 margin: 15px 0;
   		 //height: 150px;
   		//width: 150px;
+  		 //outline: solid 2px red;
+  		 max-width: 100%;
+  		 min-height: 150px;
   		 text-align: center;
-  		 line-height: 150px;
+  		 vertical-align: middle;
+  		 //line-height: 150px;
+  		 //
+  		 
+  		 #dropzonebox{
+  		 	
+  		 	min-height: 150px;
+  		 	
+  		 	.wrapperflex{
+  		 		display: flex;
+  		 		flex-direction: column;
+  		 		justify-content: center;
+  		 		min-height: 150px;
+  		 		.wrapper{
+  		 			width: 100%;
+  		 		}
+  		 	}
+  		 }
   		 
   		 .drop{
   		 	margin: 0px 0px 10px 0px; 
@@ -354,6 +378,7 @@ body{
   		 .gallery-container{
   		 	width: 100%;
   		 	text-align: left;
+  		 	//outline: solid 1px green;
   		 }
 
   		 .gallery-box{
