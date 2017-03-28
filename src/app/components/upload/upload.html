@@ -5,11 +5,9 @@
 		<p>Puja per aquí les teves fotos:</p>
 
 		
-		<button class="btn btn-default" ng-click="upload.showObject(); upload.obj.upload();">Puja-ho tot</button>
+		<button class="btn btn-default" ng-click="upload.showObject(); upload.sendToS3(upload.obj);">Puja-ho tot</button>
 		<div id="flowjs" 
-			flow-init="{
-				uploadMethod: upload.methodUplaod
-			}" 
+			flow-init
 			flow-name="upload.obj"
 		    flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 		  <div id="dropzonebox" class="drop" flow-drop ng-class="dropClass">

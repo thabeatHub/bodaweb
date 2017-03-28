@@ -19,8 +19,7 @@
 
 			vm.AWS.config.region = 'eu-west-1';
 
-			vm.roleArnFB = 'arn:aws:iam::419400150602:role/myAppFBRole';
-			vm.roleArnAmazon = 'arn:aws:iam::419400150602:role/myAppAmazonRole';
+			vm.roleArnFB = 'arn:aws:iam::934453744996:role/MyAppFBRole';
 			
 			vm.bucketName = 'casorifestival.com';
 

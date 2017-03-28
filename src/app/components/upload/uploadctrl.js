@@ -28,9 +28,40 @@
             // }
             // 
             
-            vm.methodUplaod = function(flowFile, flowChunks){
+            vm.methodUplaod = function (flowFile, flowChunk){
                 $log.log(flowFile);
-                $log.log(flowChunks);
+                $log.log(flowChunk);
+            }
+
+            vm.sendToS3 = function(object){
+                object.upload();
+                for (var i = object.files.length - 1; i >= 0; i--){
+                    $log.log(object.files[i]);
+
+                    var params = {
+                        Key: "testupload/" + object.files[i].file.name, 
+                        ContentType: object.files[i].file.type, 
+                        Body: object.files[i].file,
+                        Metadata: {
+                            file: String(),
+                            description: String(),
+                            date: String(),
+                            type: String()
+                        }
+                    };
+
+                    customAWSService.bucket.config.credentials = customAWSService.AWS.config.credentials;
+
+                    $log.log("***********");
+                    $log.log("Credentials in AWS: \n");
+                    $log.log(customAWSService.AWS.config.credentials);
+                    $log.log("Credentials in bucket: \n");
+                    $log.log(customAWSService.bucket.config.credentials);
+
+                    customAWSService.bucket.upload(params, function (err, data){
+                        err ? $log.log('ERROR!' + String(err)) : $log.log('UPLOADED.');
+                    });
+                }
             }
 
 
