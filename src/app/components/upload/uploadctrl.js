@@ -13,6 +13,14 @@
 			var vm = this;
 
             vm.obj = {};
+            
+            //vm.count = 0;
+
+            $scope.$on("EventUpdate", function(){
+                //vm.count++;
+                //$log.log(vm.progressDict);
+                $scope.$apply();
+            });
 
             vm.showObject = function(){
                 $log.log(vm.obj);
@@ -21,25 +29,26 @@
 
             vm.dropzone = document.getElementById('dropzonebox');
 
-            // vm.galleryContainer = document.getElementById('gallery-container');
-
-            // vm.galleryContainer.ondrop = function(e){
-            //     e.preventDefault();
-            // }
-            // 
-            
-            vm.methodUplaod = function (flowFile, flowChunk){
-                $log.log(flowFile);
-                $log.log(flowChunk);
-            }
-
             vm.sendToS3 = function(object){
-                object.upload();
-                for (var i = object.files.length - 1; i >= 0; i--){
-                    $log.log(object.files[i]);
+                //object.upload();
+
+                $scope.$watch(
+                    object,
+                    function (newValue, oldValue) {
+                        if (newValue !== oldValue) {
+                             return newvalue;
+                        }
+                    }
+                );
+
+                vm.progressDict = new Array();
+
+                for (i = 0 ; i < object.files.length ; i++){
 
                     var params = {
-                        Key: "testupload/" + object.files[i].file.name, 
+                        Bucket: customAWSService.bucketName,
+                        Key: "testupload/" + object.files[i].file.name
+                            .replace(/\s+/g, '_'), //sanitized
                         ContentType: object.files[i].file.type, 
                         Body: object.files[i].file,
                         Metadata: {
@@ -50,17 +59,40 @@
                         }
                     };
 
-                    customAWSService.bucket.config.credentials = customAWSService.AWS.config.credentials;
+                    vm.updateProgress = function(evt) {
 
-                    $log.log("***********");
-                    $log.log("Credentials in AWS: \n");
-                    $log.log(customAWSService.AWS.config.credentials);
-                    $log.log("Credentials in bucket: \n");
-                    $log.log(customAWSService.bucket.config.credentials);
+                        var tempkey = evt.key.split('/').pop();
+                        
+                        vm.progressDict[tempkey].value = ((evt.loaded * 100) / evt.total);
+                        
+                        $log.log("Uploaded :: " + parseInt(vm.progressDict[tempkey].value)+'%');
 
-                    customAWSService.bucket.upload(params, function (err, data){
-                        err ? $log.log('ERROR!' + String(err)) : $log.log('UPLOADED.');
+                        $scope.$emit("EventUpdate");
+                        $scope.$broadcast("EventUpdate");
+                    }
+                  
+                    vm.progressDict[params.Key.split('/').pop()] = {
+                        id: i,
+                        value: 0
+                    };
+
+                    vm.uploadMan = new customAWSService.AWS.S3.ManagedUpload({
+                        params: params
                     });
+
+                    vm.uploadMan.on('httpUploadProgress', vm.updateProgress);
+
+                    vm.uploadMan.send(
+                        function(err, data){
+                            if(err){
+                                $log.log("There was some error uploading. Error: "+err);
+                                return;
+                            }
+                            $log.log("SUCCESS!");
+                            //$log.log(data);
+                        }
+                 
+                    );
                 }
             }
 

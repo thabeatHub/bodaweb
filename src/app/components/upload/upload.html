@@ -19,29 +19,40 @@
 				    
 				 </div>
 			</div>
+			
+			<p>{{upload.count}}</p>	
+			<div ng-repeat="(key, value) in upload.progressDict track by value.id">			        	
+				<p>{{key}}: {{value}}</p>
+			</div>
 
 		    <div id="gallery-container" class="gallery-container">
 
+		         
 		      <div ng-repeat="file in upload.obj.files" class="gallery-box">
 		        <span class="filename">{{file.name}}</span>
+		        
 		        <div class="thumbnail" ng-show="upload.obj.files.length">
 			          	<img flow-img="file" />
 		        </div>
 		        <div class="clear"></div>
 		        <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-		          <div class="progress-bar" role="progressbar"
-		               aria-valuenow="{{file.progress() * 100}}"
+		          <div ng-repeat="(name, progressinfo) in upload.progressDict track by progressinfo.id" class="progress-bar" role="progressbar"
+		               aria-valuenow="{{progressinfo.value}}"
 		               aria-valuemin="0"
 		               aria-valuemax="100"
-		               ng-style="{width: (file.progress() * 100) + '%'}">
-		            <span class="sr-only">{{file.progress()}}% Complete</span>
+		               ng-style="{width: (progressinfo.value) + '%'}">
+		            <span class="sr-only">{{progressinfo.value}}% Complete</span>
+		            <span>{{name}}: {{progressinfo.value}}</span>
+
 		          </div>
 		        </div>
+
 		        <div class="btn-group">
 		          <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
 		            Cancel·la
 		          </a>
 		        </div>
+
 		      </div>
 		      <div class="clear"></div>
 		    </div>
