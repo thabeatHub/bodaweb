@@ -6,7 +6,7 @@
 
 		/** @ngInject */
 
-		function  loginFBService($location, customAWSService, globalService){
+		function  loginFBService($location, $log, customAWSService, globalService){
 			/*!
 			* Login to your application using Facebook.
 			* Uses the Facebook SDK for JavaScript available here:
@@ -14,6 +14,10 @@
 			*/
 
 			var vm = this;
+
+			vm.fbUserId;
+			vm.fbName;
+			vm.fbNameParsed;
 
 			vm.bucket = customAWSService.bucket;
 
@@ -56,12 +60,26 @@
 						RoleArn: customAWSService.roleArnFB,
 						WebIdentityToken: response.authResponse.accessToken
 					});
-					fbUserId = response.authResponse.userID;
+					if(response){
+						$log.log(response);
+						vm.fbUserId = response.authResponse.userID;
+
+						FB.api('/me', function(response) {
+						       console.log('Good to see you, ' + response.name + '.');
+						       $log.log(response);
+						       vm.fbName = response.name;
+						       vm.fbNameParsed = vm.fbName.replace(/\s+/g, '.');
+						       $log.log("FB User ID "+ vm.fbUserId);
+						       $log.log("FB User Name "+ vm.fbNameParsed);
+						});
+						
+					} else {
+						$log.log('User cancelled login or did not fully authorize.');
+					}
 					//button1.style.display = 'block';
 					//button2.style.display = 'block';
-
-					console.log("FB User ID "+fbUserId);
-					console.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
+					
+					$log.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
 
 					var logmessageElement = document.getElementById('logmessage');
 					logmessageElement.innerHTML = 'LOGGED IN!';
@@ -79,7 +97,7 @@
 
 				vm.actuallocation = $location.absUrl();
 
-				console.log("#### StartLogout Script " + vm.actuallocation);
+				$log.log("#### StartLogout Script " + vm.actuallocation);
 
 				customAWSService.AWS.config.credentials = new AWS.WebIdentityCredentials({
 					ProviderId: '',
@@ -87,7 +105,7 @@
 					WebIdentityToken: ''
 				});
 
-				console.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
+				$log.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
 
 				document.getElementById('LogoutFB').style.display = 'none';
 				document.getElementById('LoginWithFB').style.display = 'block';

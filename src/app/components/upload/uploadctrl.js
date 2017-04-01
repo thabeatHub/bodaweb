@@ -12,8 +12,10 @@
 
 			var vm = this;
 
+            vm.preparsedobj = {};
             vm.obj = {};
-            
+            vm.nameparsed = {};
+
             //vm.count = 0;
 
             $scope.$on("EventUpdate", function(){
@@ -23,6 +25,11 @@
             });
 
             vm.showObject = function(){
+
+                vm.obj = vm.preparsedobj;
+                for (var i = vm.preparsedobj.length - 1; i >= 0; i--) {
+                    vm.obj.files[i].file.name = vm.preparsedobj.files[i].file.name.replace(/\s+/g, '_');
+                }                
                 $log.log(vm.obj);
                 $log.log(vm.obj.files);                
             }
@@ -41,14 +48,15 @@
                     }
                 );
 
-                vm.progressDict = new Array();
+                vm.progressDict = {};
 
                 for (i = 0 ; i < object.files.length ; i++){
 
+                    vm.nameparsed[i] = object.files[i].file.name.replace(/\s+/g, '_');
+
                     var params = {
                         Bucket: customAWSService.bucketName,
-                        Key: "testupload/" + object.files[i].file.name
-                            .replace(/\s+/g, '_'), //sanitized
+                        Key: "upload/" + loginService.loginFBService.fbNameParsed + "/" + vm.nameparsed[i],
                         ContentType: object.files[i].file.type, 
                         Body: object.files[i].file,
                         Metadata: {
@@ -66,6 +74,8 @@
                         vm.progressDict[tempkey].value = ((evt.loaded * 100) / evt.total);
                         
                         $log.log("Uploaded :: " + parseInt(vm.progressDict[tempkey].value)+'%');
+
+                        //$log.log(vm.progressDict);
 
                         $scope.$emit("EventUpdate");
                         $scope.$broadcast("EventUpdate");

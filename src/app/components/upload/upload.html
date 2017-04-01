@@ -3,12 +3,11 @@
 	<div>
 
 		<p>Puja per aquí les teves fotos:</p>
-
 		
 		<button class="btn btn-default" ng-click="upload.showObject(); upload.sendToS3(upload.obj);">Puja-ho tot</button>
 		<div id="flowjs" 
 			flow-init
-			flow-name="upload.obj"
+			flow-name="upload.preparsedobj"
 		    flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 		  <div id="dropzonebox" class="drop" flow-drop ng-class="dropClass">
 			<div class="wrapperflex">
@@ -19,30 +18,24 @@
 				    
 				 </div>
 			</div>
-			
-			<p>{{upload.count}}</p>	
-			<div ng-repeat="(key, value) in upload.progressDict track by value.id">			        	
-				<p>{{key}}: {{value}}</p>
-			</div>
 
 		    <div id="gallery-container" class="gallery-container">
 
 		         
-		      <div ng-repeat="file in upload.obj.files" class="gallery-box">
+		      <div ng-repeat="(key, file) in upload.preparsedobj.files" class="gallery-box">
 		        <span class="filename">{{file.name}}</span>
 		        
-		        <div class="thumbnail" ng-show="upload.obj.files.length">
+		        <div class="thumbnail" ng-show="upload.preparsedobj.files.length">
 			          	<img flow-img="file" />
 		        </div>
 		        <div class="clear"></div>
 		        <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-		          <div ng-repeat="(name, progressinfo) in upload.progressDict track by progressinfo.id" class="progress-bar" role="progressbar"
-		               aria-valuenow="{{progressinfo.value}}"
+		          <div class="progress-bar" role="progressbar"
+		               aria-valuenow="{{upload.progressDict[upload.nameparsed[key]].value}}"
 		               aria-valuemin="0"
 		               aria-valuemax="100"
-		               ng-style="{width: (progressinfo.value) + '%'}">
-		            <span class="sr-only">{{progressinfo.value}}% Complete</span>
-		            <span>{{name}}: {{progressinfo.value}}</span>
+		               ng-style="{width: (upload.progressDict[upload.nameparsed[key]].value) + '%'}">
+		            <span class="sr-only">{{upload.progressDict[upload.nameparsed[key]].value}}% Complete</span>
 
 		          </div>
 		        </div>

@@ -27,6 +27,11 @@
       .when('/contact', {
         templateUrl: 'app/components/views/contact.html'
       })
+      .when('/gallery',{
+        templateUrl: 'app/components/gallery/gallery.html',
+        controller: 'GalleryController',
+        controllerAs: 'gallery'
+      })
       .when('/upload',{
         templateUrl: 'app/components/upload/upload.html',
         controller: 'UploadController',
