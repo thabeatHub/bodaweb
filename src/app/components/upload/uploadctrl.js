@@ -11,8 +11,7 @@
 		function UploadController($scope, $http, $log, $routeParams, loginService, customAWSService){
 
 			var vm = this;
-
-            vm.preparsedobj = {};
+            
             vm.obj = {};
             vm.nameparsed = {};
 
@@ -25,11 +24,7 @@
             });
 
             vm.showObject = function(){
-
-                vm.obj = vm.preparsedobj;
-                for (var i = vm.preparsedobj.length - 1; i >= 0; i--) {
-                    vm.obj.files[i].file.name = vm.preparsedobj.files[i].file.name.replace(/\s+/g, '_');
-                }                
+               
                 $log.log(vm.obj);
                 $log.log(vm.obj.files);                
             }
@@ -39,14 +34,14 @@
             vm.sendToS3 = function(object){
                 //object.upload();
 
-                $scope.$watch(
-                    object,
-                    function (newValue, oldValue) {
-                        if (newValue !== oldValue) {
-                             return newvalue;
-                        }
-                    }
-                );
+                // $scope.$watch(
+                //     object,
+                //     function (newValue, oldValue) {
+                //         if (newValue !== oldValue) {
+                //              return newvalue;
+                //         }
+                //     }
+                // );
 
                 vm.progressDict = {};
 

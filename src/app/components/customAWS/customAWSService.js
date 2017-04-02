@@ -24,10 +24,5 @@
 			vm.bucketName = 'casorifestival.com';
 
 
-			vm.bucket = new vm.AWS.S3({
-				params: {
-					Bucket: vm.bucketName
-				}
-			});
 		}
 })();

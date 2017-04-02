@@ -7,7 +7,7 @@
 		<button class="btn btn-default" ng-click="upload.showObject(); upload.sendToS3(upload.obj);">Puja-ho tot</button>
 		<div id="flowjs" 
 			flow-init
-			flow-name="upload.preparsedobj"
+			flow-name="upload.obj"
 		    flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 		  <div id="dropzonebox" class="drop" flow-drop ng-class="dropClass">
 			<div class="wrapperflex">
@@ -22,10 +22,10 @@
 		    <div id="gallery-container" class="gallery-container">
 
 		         
-		      <div ng-repeat="(key, file) in upload.preparsedobj.files" class="gallery-box">
+		      <div ng-repeat="(key, file) in upload.obj.files" class="gallery-box">
 		        <span class="filename">{{file.name}}</span>
 		        
-		        <div class="thumbnail" ng-show="upload.preparsedobj.files.length">
+		        <div class="thumbnail" ng-show="upload.obj.files.length">
 			          	<img flow-img="file" />
 		        </div>
 		        <div class="clear"></div>

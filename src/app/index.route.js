@@ -32,6 +32,11 @@
         controller: 'GalleryController',
         controllerAs: 'gallery'
       })
+      .when('/gallery/:user',{
+        templateUrl: 'app/components/gallery/gallery.html',
+        controller: 'GalleryController',
+        controllerAs: 'gallery'
+      })
       .when('/upload',{
         templateUrl: 'app/components/upload/upload.html',
         controller: 'UploadController',

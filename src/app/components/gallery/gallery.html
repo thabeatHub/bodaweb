@@ -3,7 +3,23 @@
 	<div>
 
 		<p>Mira les fotos de la boda:</p>
-		<p>{{gallery.test}}</p>		
+		<div ng-repeat="(name, prefix) in gallery.filekey.CommonPrefixes">	
+			<ul>
+				<li>
+					<a ng-href="/#/gallery/{{prefix.Prefix|shortenPrefix:1}}"><p>{{prefix.Prefix|shortenPrefix:49}}</p></a>
+				</li>
+			</ul>
+		</div>
+		<div ng-repeat="(name, content) in gallery.filekey.Contents">	
+			<ul>
+				<li>
+					<a ng-href="http://casorifestival.com/{{content.Key}}" class="lightbox">
+						<p>{{content.Key|shortenPrefix:1}}</p>
+						<img class="preview" ng-src="http://casorifestival.com/{{content.Key}}" alt="TestImage">
+					</a>
+				</li>
+			</ul>
+		</div>		
 
 	</div>
 </div>	
