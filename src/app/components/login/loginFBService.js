@@ -19,8 +19,6 @@
 			vm.fbName;
 			vm.fbNameParsed;
 
-			vm.bucket = customAWSService.bucket;
-
 			(function(d) {
 				var a = d.createElement('a'); a.href = '#';
 				a.id = 'LoginWithFB';
@@ -61,16 +59,16 @@
 						WebIdentityToken: response.authResponse.accessToken
 					});
 					if(response){
-						$log.log(response);
+						//$log.log(response);
 						vm.fbUserId = response.authResponse.userID;
 
 						FB.api('/me', function(response) {
-						       console.log('Good to see you, ' + response.name + '.');
-						       $log.log(response);
+						       $log.log('Good to see you, ' + response.name + '.');
+						       //$log.log(response);
 						       vm.fbName = response.name;
 						       vm.fbNameParsed = vm.fbName.replace(/\s+/g, '.');
-						       $log.log("FB User ID "+ vm.fbUserId);
-						       $log.log("FB User Name "+ vm.fbNameParsed);
+						       //$log.log("FB User ID "+ vm.fbUserId);
+						       //$log.log("FB User Name "+ vm.fbNameParsed);
 						});
 						
 					} else {

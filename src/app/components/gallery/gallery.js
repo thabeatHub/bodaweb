@@ -8,13 +8,14 @@
 
 		/** @ngInject */
 
-		function GalleryController($scope, $http, $log, $routeParams, shortenPrefixFilter, loginService, customAWSService){
+		function GalleryController($scope, $http, $log, $routeParams, Lightbox, shortenPrefixFilter, loginService, customAWSService){
 
-            $log.log($routeParams);
+            //$log.log($routeParams);
 
             var vm = this;
 
             vm.filekey = {};
+            vm.lightboxImages = new Array();
 
             var prefix;
             $routeParams.user ? prefix = 'upload/' + $routeParams.user + '/' : prefix = 'upload/';
@@ -33,6 +34,31 @@
                 }
             });
 
+            vm.getURLSigned = function(key){
+                var params = {
+                    Bucket: customAWSService.bucketName,
+                    Key: key,
+                    Expires: 3600
+                };
+                var url = vm.bucket.getSignedUrl('getObject', params);
+                return url;
+            }
+
+            vm.populateImagesLightbox = function(){
+                for (var i = vm.filekey.Contents.length - 1; i >= 0; i--) {
+                    vm.lightboxImages[i] = {
+                        'url' : vm.getURLSigned(vm.filekey.Contents[i].Key),
+                        'caption' : 'Trying a Caption'
+                    };
+                }
+                $log.log(vm.lightboxImages);
+            }
+
+            vm.openLightboxModal = function (index){
+                $log.log(index);
+                Lightbox.openModal(vm.lightboxImages, index);
+            }
+
             vm.bucket.listObjects(params, function(err, data) {
               if (err) $log.log(err, err.stack); // an error occurred
               else    ;           // successful response
@@ -44,9 +70,8 @@
                 $log.log("Error!");
             })
             .on('complete', function(response) {
-                $log.log("Always!");
                 vm.filekey = response.data;
-                $log.log(vm.filekey);
+                //$log.log(vm.filekey);
                 $scope.$apply();
             });
 

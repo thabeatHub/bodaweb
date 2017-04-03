@@ -5,7 +5,7 @@
         .module('bodasergi')
         .filter('shortenPrefix', shortenPrefix);
 
-    function shortenPrefix($log) {
+    function shortenPrefix($log, $sce) {
         return filterFilter;
 
         ////////////////

@@ -3,23 +3,26 @@
 	<div>
 
 		<p>Mira les fotos de la boda:</p>
-		<div ng-repeat="(name, prefix) in gallery.filekey.CommonPrefixes">	
+		<div id="listUsers">	
 			<ul>
-				<li>
-					<a ng-href="/#/gallery/{{prefix.Prefix|shortenPrefix:1}}"><p>{{prefix.Prefix|shortenPrefix:49}}</p></a>
+				<li ng-repeat="(name, prefix) in gallery.filekey.CommonPrefixes">
+					<a ng-href="/#/gallery/{{prefix.Prefix|shortenPrefix}}"><p>{{prefix.Prefix|shortenPrefix:49}}</p></a>
 				</li>
 			</ul>
 		</div>
-		<div ng-repeat="(name, content) in gallery.filekey.Contents">	
+		<div id="listContents">	
 			<ul>
-				<li>
-					<a ng-href="http://casorifestival.com/{{content.Key}}" class="lightbox">
-						<p>{{content.Key|shortenPrefix:1}}</p>
-						<img class="preview" ng-src="http://casorifestival.com/{{content.Key}}" alt="TestImage">
-					</a>
+				<li ng-repeat="(name, content) in gallery.filekey.Contents">
+					<div class="imagecontent">
+						<a ng-click="gallery.populateImagesLightbox(); gallery.openLightboxModal(name);" class="lightbox">
+							<div class="thumbnail">
+								<img class="preview" ng-src="{{gallery.getURLSigned(content.Key)}}" ng-alt="{{content.Key|shortenPrefix}}">
+							</div>
+							<span class="filename">{{content.Key|shortenPrefix}}</span>
+						</a>
+					</div>
 				</li>
 			</ul>
-		</div>		
-
+		</div>
 	</div>
 </div>	
