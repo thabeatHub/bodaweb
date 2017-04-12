@@ -6,7 +6,10 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $http, $timeout, webDevTec){
-  
+  function MainController($scope, $http, $timeout, $log, customAWSService, webDevTec){
+
+  	var loginArea = document.getElementById('LoginArea');
+	loginArea.style.display = 'none';
+
   }
 })();

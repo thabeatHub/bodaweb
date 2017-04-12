@@ -2,6 +2,7 @@
   "name": "bodasergi",
   "version": "0.0.0",
   "dependencies": {
+    "angular-touch": "^1.6.4",
     "angular-ui-bootstrap": "^1.3.2",
     "include-media": "^1.4.9"
   },

@@ -256,21 +256,27 @@ body{
 
   /******LOGIN FB ********/
 
+  #LoginArea{
+  	display: none;
+  }
+
   #LogoutAmazon, #LogoutFB{
   		display: none;
   		text-decoration: none;
   		max-width: 10em;
   		margin: 1em 0;
-  		-webkit-box-shadow: 2px 2px 0 3px $shadows;
-  		box-shadow: 2px 2px 0 3px $shadows;
+  		float: right;
+  		//-webkit-box-shadow: 2px 3px 0 3px $shadows;
+  		//box-shadow: 2px 2px 0 3px $shadows;
   	}
 
   	#LoginWithAmazon, #LoginWithFB{
   		display: block;
   		max-width: 10em;
   		margin: 1em 0;
-  		-webkit-box-shadow: 2px 2px 0 3px $shadows;
-  		box-shadow: 2px 2px 0 3px $shadows;
+  		float: right;
+  		//-webkit-box-shadow: 2px 3px 0 3px $shadows;
+  		//box-shadow: 2px 4px 0 2px $shadows;
 
   	}
 
@@ -298,18 +304,20 @@ body{
   	#logmessage,
   		#logmessage.ko{
   			display: block;
-  			color: white;
-  			background-color: red;
+  			color: $menu-text-color;
+  			//background-color: red;
+  			border: dashed 1px $menu-text-color;
   			margin-top: 10px;
   			padding: 5px;
+  			text-align: center;
   			-webkit-border-radius: 6px;
   			border-radius: 6px;
 
   		}
 
   		#logmessage.ok{
-  			color: white;
-  			background-color: green;
+  			color: $menu-text-color;
+  			//background-color: green;
   			font-weight: bold;
   			padding: 5px;
   		    animation-name: fadeOut;
@@ -384,7 +392,7 @@ body{
   		 }
 
   		 .gallery-box{
-  		 	width: 23%;
+  		 	width: 48%;
   		 	margin: 0 1%;
   		 	padding: 0;
   		 	line-height: 1ex;
@@ -417,6 +425,10 @@ body{
   		 		}
   		 	}
 
+  		 	@include media(">phone"){
+  		 		width: 23%;
+  		 	}
+
 
   		 }
 
@@ -438,7 +450,11 @@ body{
   		#listContents{
   			li{
   				display: inline-block;
-  				width: 25%;
+  				width: 50%;
+
+  				@include media(">phone"){
+  		 			width: 23%;
+  		 		}
   				
   			}
 

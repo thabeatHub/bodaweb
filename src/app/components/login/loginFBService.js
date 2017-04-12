@@ -69,6 +69,17 @@
 						       vm.fbNameParsed = vm.fbName.replace(/\s+/g, '.');
 						       //$log.log("FB User ID "+ vm.fbUserId);
 						       //$log.log("FB User Name "+ vm.fbNameParsed);
+						       //$log.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
+
+					var logmessageElement = document.getElementById('logmessage');
+					$log.log(vm.fbName);
+					logmessageElement.innerHTML = 'LOGUEJAT! Benvingut/da ' + vm.fbName;
+					logmessageElement.className = 'ok';       
+					//document.getElementById('navigationmenu').style.display = 'block';
+					document.getElementById('LogoutFB').style.display = 'block';
+					document.getElementById('LoginWithFB').style.display = 'none';
+
+					window.location.replace(vm.actuallocation);
 						});
 						
 					} else {
@@ -77,16 +88,7 @@
 					//button1.style.display = 'block';
 					//button2.style.display = 'block';
 					
-					$log.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
 
-					var logmessageElement = document.getElementById('logmessage');
-					logmessageElement.innerHTML = 'LOGGED IN!';
-					logmessageElement.className = 'ok';       
-					//document.getElementById('navigationmenu').style.display = 'block';
-					document.getElementById('LogoutFB').style.display = 'block';
-					document.getElementById('LoginWithFB').style.display = 'none';
-
-					window.location.replace(vm.actuallocation);
 				});
 
 			};
@@ -107,7 +109,7 @@
 
 				document.getElementById('LogoutFB').style.display = 'none';
 				document.getElementById('LoginWithFB').style.display = 'block';
-				document.getElementById('logmessage').innerHTML = 'not logged in!';
+				document.getElementById('logmessage').innerHTML = 'No estàs autenticat/da!';
 				document.getElementById('logmessage').className = 'ko';      
 				//document.getElementById('navigationmenu').style.display = 'none';
 

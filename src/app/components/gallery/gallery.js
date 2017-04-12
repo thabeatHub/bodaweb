@@ -14,6 +14,9 @@
 
             var vm = this;
 
+            var loginArea = document.getElementById('LoginArea');
+            loginArea.style.display = 'block';
+
             vm.filekey = {};
             vm.lightboxImages = new Array();
 
@@ -47,11 +50,12 @@
             vm.populateImagesLightbox = function(){
                 for (var i = vm.filekey.Contents.length - 1; i >= 0; i--) {
                     vm.lightboxImages[i] = {
-                        'url' : vm.getURLSigned(vm.filekey.Contents[i].Key),
-                        'caption' : 'Trying a Caption'
+                        //'caption' : 'Trying a Caption',
+                        'url' : vm.getURLSigned(vm.filekey.Contents[i].Key)
+                        
                     };
                 }
-                $log.log(vm.lightboxImages);
+                //$log.log(vm.lightboxImages);
             }
 
             vm.openLightboxModal = function (index){

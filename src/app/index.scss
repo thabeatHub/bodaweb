@@ -22,6 +22,10 @@ $navbar-inverse-brand-hover-color:          $menu-text-hover;
 $navbar-default-color:                      rgba(255, 255, 255, 0) !default;
 $navbar-default-bg:                         rgba(255, 255, 255, 0) !default;
 $navbar-inverse-bg:                         rgba(255, 255, 255, 0) !default;
+$brand-primary:                             darken($button-color, 6.5%) !default; // #337ab7
+$btn-primary-color:                         #fff !default;
+$btn-primary-bg:                            $brand-primary !default;
+$btn-primary-border:                        darken($btn-primary-bg, 6%) !default;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /**

@@ -11,6 +11,9 @@
 		function UploadController($scope, $http, $log, $routeParams, loginService, customAWSService){
 
 			var vm = this;
+
+            var loginArea = document.getElementById('LoginArea');
+            loginArea.style.display = 'block';
             
             vm.obj = {};
             vm.nameparsed = {};

@@ -26,13 +26,15 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
           <header id="ownheader" class="container">
-              <div id="LoginArea">
-                  <p id="logmessage" class="ko">not logged in!</p>            
-              </div>
+              
               <div id="navigationmenu">
                   <acme-navbar></acme-navbar>         
               </div>
-      <!--         <div>{{main.welcometext}}</div> -->
+
+              <div id="LoginArea">
+                  <p id="logmessage" class="ko">No estàs autenticat/da!</p>            
+              </div>
+
           </header>
         <div class="main container">
             <div ng-view></div>

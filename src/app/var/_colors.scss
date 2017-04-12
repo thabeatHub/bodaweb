@@ -7,6 +7,7 @@ $border: #bb9776;
 $menu-text-hover: #f1cfa1;
 $link-hover: #f1cfa1;
 $background: silver;
-$shadows: #333;
 $font: #222;
 $fontsize: 1.5rem;
+$button-color: #bb9776;
+$shadows: darken($button-color, 25%) !default;
