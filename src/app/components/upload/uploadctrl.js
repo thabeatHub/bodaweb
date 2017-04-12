@@ -26,12 +26,6 @@
                 $scope.$apply();
             });
 
-            vm.showObject = function(){
-               
-                $log.log(vm.obj);
-                $log.log(vm.obj.files);                
-            }
-
             vm.dropzone = document.getElementById('dropzonebox');
 
             vm.sendToS3 = function(object){
@@ -58,10 +52,9 @@
                         ContentType: object.files[i].file.type, 
                         Body: object.files[i].file,
                         Metadata: {
-                            file: String(),
-                            description: String(),
-                            date: String(),
-                            type: String()
+                            file: String(vm.nameparsed[i]),
+                            date: String(Date.now()),
+                            type: String(object.files[i].file.type)
                         }
                     };
 

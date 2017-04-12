@@ -41,7 +41,7 @@
                 var params = {
                     Bucket: customAWSService.bucketName,
                     Key: key,
-                    Expires: 3600
+                    Expires: 900
                 };
                 var url = vm.bucket.getSignedUrl('getObject', params);
                 return url;

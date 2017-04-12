@@ -1,22 +1,26 @@
-<div class=modal-body ng-swipe-left=Lightbox.nextImage() ng-swipe-right=Lightbox.prevImage()>
-	<div class=lightbox-nav>
-		<button class=close aria-hidden=true ng-click=$dismiss()>
+<div class="modal-body" ng-swipe-left=Lightbox.nextImage() ng-swipe-right=Lightbox.prevImage()>
+	<div class="lightbox-nav">
+		<button class="close" aria-hidden=true ng-click=$dismiss()>
 			×
 		</button>
-		<div class=btn-group ng-if="Lightbox.images.length > 1">
+		<div class="btn-group" ng-if="Lightbox.images.length > 1">
 			<a class="btn btn-xs btn-default" ng-click=Lightbox.prevImage()>
-				‹ Anterior
+				<p><span class="glyphicon glyphicon-step-backward gi-1x"></span> ‹ Anterior</p>
 			</a> 
 			<a ng-href={{Lightbox.imageUrl}} target=_blank class="btn btn-xs btn-default" title="Open in new tab">
-				Obre en una nova pestanya
+				<p><span class="glyphicon glyphicon-new-window gi-1x"></span> Obre en una nova pestanya</p>
+			</a>
+			<a ng-href={{Lightbox.imageUrl}}  download="{{Lightbox.imageUrl}}" target=_self class="btn btn-xs btn-default" title="Download">
+				<p><span  class="glyphicon glyphicon-download-alt gi-1x"></span> Descarrega</p>
 			</a> 
 			<a class="btn btn-xs btn-default" ng-click=Lightbox.nextImage()>
-				Següent ›
+				<p>Següent › <span class="glyphicon glyphicon-step-forward gi-1x"></span></p>
 			</a>
 		</div>
 	</div>
-	<div class=lightbox-image-container>
-		<div class=lightbox-image-caption>
+	<div class="clear"></div>
+	<div class="lightbox-image-container">
+		<div class="lightbox-image-caption">
 			<span>
 				{{Lightbox.imageCaption}}
 			</span>
