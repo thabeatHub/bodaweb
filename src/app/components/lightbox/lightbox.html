@@ -5,16 +5,16 @@
 		</button>
 		<div class="btn-group" ng-if="Lightbox.images.length > 1">
 			<a class="btn btn-xs btn-default" ng-click=Lightbox.prevImage()>
-				<p><span class="glyphicon glyphicon-step-backward gi-1x"></span> ‹ Anterior</p>
+				<p><span class="glyphicon glyphicon-step-backward gi-1x"></span><span class="buttontext"> ‹ Anterior</span></p>
 			</a> 
 			<a ng-href={{Lightbox.imageUrl}} target=_blank class="btn btn-xs btn-default" title="Open in new tab">
-				<p><span class="glyphicon glyphicon-new-window gi-1x"></span> Obre en una nova pestanya</p>
+				<p><span class="glyphicon glyphicon-new-window gi-1x"></span><span class="buttontext"> Obre en una nova pestanya</span></p>
 			</a>
 			<a ng-href={{Lightbox.imageUrl}}  download="{{Lightbox.imageUrl}}" target=_self class="btn btn-xs btn-default" title="Download">
-				<p><span  class="glyphicon glyphicon-download-alt gi-1x"></span> Descarrega</p>
+				<p><span  class="glyphicon glyphicon-download-alt gi-1x"></span><span class="buttontext"> Descarrega</span></p>
 			</a> 
 			<a class="btn btn-xs btn-default" ng-click=Lightbox.nextImage()>
-				<p>Següent › <span class="glyphicon glyphicon-step-forward gi-1x"></span></p>
+				<p><span class="buttontext">Següent › </span><span class="glyphicon glyphicon-step-forward gi-1x"></span></p>
 			</a>
 		</div>
 	</div>

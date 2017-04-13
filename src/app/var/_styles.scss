@@ -504,15 +504,90 @@ body{
   		}
   	}
 
-  	// Glyphicons
+  	// Lightbox
+  	
+  	#loading-bar-spinner .spinner-icon{
+
+  		position: fixed;
+  			top: 33%;
+  			left: 50%;
+  		//margin: 20px;
+  		min-height: 50px;
+  		min-width: 50px;
+  		margin-top: -25px;
+  		margin-left: -25px;
+  	}
+
+  	#loading-bar .bar{
+  		height: 10px;
+  	}
   	
   	.glyphicon{
+  		min-width: 20px;
   		margin-top: -5px;
-  		line-height: 20px;
+  		line-height: 30px;
   		vertical-align: middle;
   	}
-  	.gi-1x{font-size: 1.3em; line-height: 1.3em;}
-  	.gi-2x{font-size: 2em; line-height: 2em;}
-  	.gi-3x{font-size: 3em; line-height: 3em;}
-  	.gi-4x{font-size: 4em; line-height: 4em;}
-  	.gi-5x{font-size: 5em; line-height: 5em;}
+  	.gi-1x{font-size: 1.3em;}
+  	.gi-2x{font-size: 2em;}
+  	.gi-3x{font-size: 3em;}
+  	.gi-4x{font-size: 4em;}
+  	.gi-5x{font-size: 5em;}
+
+  	.modal-dialog{ //for images long and narrow
+  		@include media(">phone"){
+			min-width: 640px;
+		}
+  	}
+
+  	.lightbox-nav{
+		margin-bottom: 10px; 
+		z-index: 2;
+		min-height: 30px;
+		//outline: solid 1px red;
+
+  		a.btn-default{
+  		
+	  		//display: inline-block;
+	  		padding: 3px 10px;
+	  		line-height: 15px;
+	  		vertical-align: middle;
+
+	  		&:hover{
+	  			.glyphicon{
+	  				color: lighten(#333, 33%);
+	  			}
+	  		}
+
+	  		p{
+	  			margin: 0;
+	  			line-height: 30px;
+	  			vertical-align: middle;	  			
+	  		}
+	  	}
+	}
+
+	.buttontext{
+		display: none;
+			@include media(">phone") {
+		  	display: inline;
+		}
+	}
+
+	.clear{
+		display: table;
+		&:after{
+			content: " ";
+			display: table;
+			clear: both;
+		}
+	}
+
+  	.lightbox-image-container{
+  		display: block;
+  		clear: both;
+  		img{
+  			display: inline-block;
+  			clear: both;
+  		}
+  	}

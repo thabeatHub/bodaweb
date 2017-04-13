@@ -8,7 +8,7 @@
 
 		/** @ngInject */
 
-		function UploadController($scope, $http, $log, $routeParams, loginService, customAWSService){
+		function UploadController($scope, $http, $log, $routeParams, $filter, loginService, customAWSService){
 
 			var vm = this;
 
@@ -53,8 +53,9 @@
                         Body: object.files[i].file,
                         Metadata: {
                             file: String(vm.nameparsed[i]),
-                            date: String(Date.now()),
-                            type: String(object.files[i].file.type)
+                            date: $filter('date')(Date.now(), 'medium'),
+                            type: String(object.files[i].file.type),
+                            user: JSON.parse( JSON.stringify(loginService.loginFBService.fbName))
                         }
                     };
 
