@@ -69,7 +69,7 @@
 						       vm.fbNameParsed = vm.fbName.replace(/\s+/g, '.');
 						       //$log.log("FB User ID "+ vm.fbUserId);
 						       //$log.log("FB User Name "+ vm.fbNameParsed);
-						       //$log.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
+						       $log.log("Credentials "+JSON.stringify(customAWSService.AWS.config.credentials));
 
 					var logmessageElement = document.getElementById('logmessage');
 					$log.log(vm.fbName);

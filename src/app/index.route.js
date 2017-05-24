@@ -12,8 +12,8 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .when('/map', {
-        templateUrl: 'app/components/views/map.html',
+      .when('/thanks', {
+        templateUrl: 'app/components/views/thanks.html',
         controller: 'MainController',
         controllerAs: 'main'
       })
